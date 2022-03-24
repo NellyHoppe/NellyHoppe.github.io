@@ -8,6 +8,10 @@ header{
 text-align: center;
 }
 
+img.banner{
+    width: 100%;
+}
+
 img.user{
     border-radius: 50%;
     margin-top: -50px;
