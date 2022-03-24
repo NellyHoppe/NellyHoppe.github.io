@@ -9,3 +9,7 @@ main
     max-width: 1024px;
     margin: auto;
 }
+
+article{
+    padding: 1em;
+}
