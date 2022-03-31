@@ -9,10 +9,16 @@
     <!--Stile einbauen-->
     <link rel="stylesheet" href="main.css">
     <!--Font awesome einbauen-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--Leaflet Bibliothek-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
 </head>
 
 <body>
@@ -41,7 +47,8 @@
             <figure>
                 <img src="images/attraction.jpg"
                     alt="im Vordergrund ein Strand und im Hintergrund die Vulkaninsel Rangitoto im Sonnenuntergang">
-                <figcaption><i class="fa-solid fa-camera-retro"></i> Sonnenuntergang am Strand mit Blick auf die Insel Rangitoto, die sich perfekt für einen
+                <figcaption><i class="fa-solid fa-camera-retro"></i> Sonnenuntergang am Strand mit Blick auf die Insel
+                    Rangitoto, die sich perfekt für einen
                     Halbtagesausflug von Auckland aus eignet. Bild: <a
                         href="https://pixabay.com/photos/sun-rise-beach-new-zealand-auckland-661541/">Holgi</a>
                 </figcaption>
@@ -61,14 +68,24 @@
         </article>
         <footer>
             <nav>
-                <a class="back" href="https://helli07.github.io/nz/index.html"><i class="fa-solid fa-circle-arrow-left"></i> vorhergehende Etappe</a>
-                <a class="next" href="https://gatt-f.github.io/nz/index.html">nächste Etappe <i class="fa-solid fa-circle-arrow-right"></i></a>
+                <a class="back" href="https://helli07.github.io/nz/index.html"><i
+                        class="fa-solid fa-circle-arrow-left"></i> vorhergehende Etappe</a>
+                <a class="next" href="https://gatt-f.github.io/nz/index.html">nächste Etappe <i
+                        class="fa-solid fa-circle-arrow-right"></i></a>
             </nav>
         </footer>
     </main>
 
     <script>
-        
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .openPopup();
     </script>
 
 </body>
