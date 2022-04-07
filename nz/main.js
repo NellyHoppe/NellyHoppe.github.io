@@ -47,7 +47,7 @@ for (let etappe of ETAPPEN) {
     .bindPopup(popup)
 
     //Etappennavigation erweitern
-    let link = `<a href="https://${etappe.github}.github.io/nz/index.html">${etappe.nr}</a>`;
+    let link = `<a href="https://${etappe.github}.github.io/nz/index.html" class="etappenLink">${etappe.nr}</a>`;
     document.querySelector("#navigation").innerHTML += link
 }
 
