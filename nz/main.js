@@ -45,6 +45,9 @@ for (let etappe of ETAPPEN) {
     //console.log(etappe)
     L.marker([etappe.lat, etappe.lng]).addTo(map)
     .bindPopup(popup)
+
+    //Etappennavigation erweitern
+    
 }
 
 //https://webmapping.github.io/nz/huts.js
