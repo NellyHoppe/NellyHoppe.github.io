@@ -15,6 +15,7 @@ console.log("text");
 console.log('text');
 console.log('id="map"');
 console.log(`latitude = ${lat}`)
+console.log(ETAPPEN)
 
 let popup = `
 <h3>Auckland</h3>
@@ -26,10 +27,10 @@ let popup = `
 
 let map = L.map('map').setView(coords, zoom);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-        L.marker(coords).addTo(map)
-            .bindPopup(popup)
-            .openPopup();
+L.marker(coords).addTo(map)
+    .bindPopup(popup)
+    .openPopup();
