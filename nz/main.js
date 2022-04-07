@@ -50,6 +50,6 @@ for (let etappe of ETAPPEN) {
 //https://webmapping.github.io/nz/huts.js
 for (let hut of HUTS){
     
-    L.marker([hut.lat, hut.lng]).addTo(map)
+    L.circleMarker([hut.lat, hut.lng]).addTo(map)
 }
 
