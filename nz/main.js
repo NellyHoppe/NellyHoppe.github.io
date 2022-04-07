@@ -49,7 +49,10 @@ for (let etappe of ETAPPEN) {
 
 //https://webmapping.github.io/nz/huts.js
 for (let hut of HUTS){
-    
+    let popup = `
+    <h3>${hut.name}</h3>
+    `
     L.circleMarker([hut.lat, hut.lng]).addTo(map)
+    .bindPopup(popup)
 }
 
