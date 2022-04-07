@@ -47,12 +47,9 @@ for (let etappe of ETAPPEN) {
     .bindPopup(popup)
 }
 
-for (let hut of HUTS )
-    let hut = `
-    <h3>${hut.name}</h3>`
-    L.marker([hut.lat, hut.lng])
-    .bindPopup(hut)
-
-
 //https://webmapping.github.io/nz/huts.js
+for (let hut of HUTS){
+    
+    L.marker([hut.lat, hut.lng]).addTo(map)
+}
 
