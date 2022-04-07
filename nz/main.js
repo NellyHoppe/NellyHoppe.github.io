@@ -47,7 +47,8 @@ for (let etappe of ETAPPEN) {
     .bindPopup(popup)
 
     //Etappennavigation erweitern
-    
+    let link = `<a href="https://${etappe.github}.github.io/nz/index.html">${etappe.nr}</a>`;
+    document.querySelector("#navigation").innerHTML += link
 }
 
 //https://webmapping.github.io/nz/huts.js
@@ -64,4 +65,3 @@ for (let hut of HUTS){
     L.circleMarker([hut.lat, hut.lng]).addTo(map)
     .bindPopup(popup)
 }
-
