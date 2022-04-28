@@ -16,22 +16,9 @@ let coords = [-36.833333, 174.8]
 //console.log('id="map"');
 //console.log(`latitude = ${lat}`)
 
-let popup = `
-<h3>Auckland</h3>
-    <ul>
-    <li>geogr. Länge: ${lng}</li> 
-    <li>geogr. Breite: ${lat}</li>
-    </ul>`
-
-let map = L.map('map').setView(coords, zoom);
-
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
-
-L.marker(coords).addTo(map)
-    .bindPopup(popup)
-    .openPopup();
 
 for (let etappe of ETAPPEN) {
     let popup = `
