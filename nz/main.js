@@ -70,3 +70,31 @@ for (let hut of HUTS) {
         radius: 5
     }).addTo(map).bindPopup(popup)
 }
+let startLayer = L.tileLayer.provider("OpenStreetMap.Mapnik");
+
+let layerControl = L.control.layers({
+    "Open Street Map": startLayer,
+    "Open Topo Map": L.tileLayer.provider("OpenTopoMap"),
+    "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
+    "OSM mit Wanderwegen": L.layerGroup([startLayer,
+        L.tileLayer.provider("WaymarkedTrails.hiking"),
+    ])
+}).addTo(map);
+
+/*layerControl.expand();
+
+let sightLayer = L.featureGroup().addTo(map);
+
+layerControl.addOverlay(sightLayer, "Sehenswürdigkeiten");
+
+let mrk = L.marker([stephansdom.lat, stephansdom.lng]).addTo(sightLayer)*/
+
+// Maßstab hinzufügen
+L.control.scale({
+    imperial: false,
+}).addTo(map);
+
+L.control.fullscreen().addTo(map);
+
+let miniMap = new L.Control.MiniMap(
+    startLayer).addTo(map)
