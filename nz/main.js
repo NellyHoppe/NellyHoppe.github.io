@@ -48,6 +48,28 @@ for (let etappe of ETAPPEN) {
 }
 
 //https://webmapping.github.io/nz/huts.js
+
+let startLayer = L.tileLayer.provider("OpenStreetMap.Mapnik");
+
+let layerControl = L.control.layers({
+    "Open Street Map": startLayer,
+    "Open Topo Map": L.tileLayer.provider("OpenTopoMap"),
+    "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
+    "OSM mit Wanderwegen": L.layerGroup([startLayer,
+        L.tileLayer.provider("WaymarkedTrails.hiking"),
+    ])
+}).addTo(map);
+
+let trailLayer = L.featureGroup();
+
+layerControl.addOverlay(trailLayer, "Wanderwege");
+
+L.tileLayer.provider("WaymarkedTrails.hiking").addTo(trailLayer);
+
+let hutLayer = L.featureGroup().addTo(map);
+
+layerControl.addOverlay(hutLayer, "Hütten");
+
 for (let hut of HUTS) {
     let popup = `
     <h3>${hut.name}</h3>
@@ -68,26 +90,8 @@ for (let hut of HUTS) {
     L.circleMarker([hut.lat, hut.lng], {
         color: statusColor,
         radius: 5
-    }).addTo(map).bindPopup(popup)
+    }).addTo(hutLayer).bindPopup(popup)
 }
-let startLayer = L.tileLayer.provider("OpenStreetMap.Mapnik");
-
-let layerControl = L.control.layers({
-    "Open Street Map": startLayer,
-    "Open Topo Map": L.tileLayer.provider("OpenTopoMap"),
-    "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
-    "OSM mit Wanderwegen": L.layerGroup([startLayer,
-        L.tileLayer.provider("WaymarkedTrails.hiking"),
-    ])
-}).addTo(map);
-
-/*layerControl.expand();
-
-let sightLayer = L.featureGroup().addTo(map);
-
-layerControl.addOverlay(sightLayer, "Sehenswürdigkeiten");
-
-let mrk = L.marker([stephansdom.lat, stephansdom.lng]).addTo(sightLayer)*/
 
 // Maßstab hinzufügen
 L.control.scale({
