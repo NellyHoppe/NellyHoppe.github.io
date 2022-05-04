@@ -55,9 +55,6 @@ let layerControl = L.control.layers({
     "Open Street Map": startLayer,
     "Open Topo Map": L.tileLayer.provider("OpenTopoMap"),
     "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
-    "OSM mit Wanderwegen": L.layerGroup([startLayer,
-        L.tileLayer.provider("WaymarkedTrails.hiking"),
-    ])
 }).addTo(map);
 
 let trailLayer = L.featureGroup();
