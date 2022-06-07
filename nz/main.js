@@ -1,8 +1,6 @@
 /*Neuseelandreise Skript*/
 // einzeiliger Komentar
 
-let lat = -36.833333
-let lng = 174.8
 let zoom = 10
 
 let coords = [
