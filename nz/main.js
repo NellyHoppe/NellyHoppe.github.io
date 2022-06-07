@@ -19,11 +19,25 @@ let coords = [
 //console.log('id="map"');
 //console.log(`latitude = ${lat}`)
 
-let map = L.map('map').setView(coords, zoom);
+let startLayer = L.tileLayer.provider("OpenStreetMap.Mapnik");
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+let map = L.map('map', {
+    center: coords,
+    zoom: zoom,
+    layers: [
+        startLayer
+    ],
+});
+
+let layerControl = L.control.layers({
+    "Open Street Map": startLayer,
+    "Open Topo Map": L.tileLayer.provider("OpenTopoMap"),
+    "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
 }).addTo(map);
+
+/*L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);*/
 
 for (let etappe of ETAPPEN) {
     let popup = `
@@ -48,14 +62,6 @@ for (let etappe of ETAPPEN) {
 }
 
 //https://webmapping.github.io/nz/huts.js
-
-let startLayer = L.tileLayer.provider("OpenStreetMap.Mapnik");
-
-let layerControl = L.control.layers({
-    "Open Street Map": startLayer,
-    "Open Topo Map": L.tileLayer.provider("OpenTopoMap"),
-    "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
-}).addTo(map);
 
 let trailLayer = L.featureGroup();
 
@@ -98,4 +104,6 @@ L.control.scale({
 L.control.fullscreen().addTo(map);
 
 let miniMap = new L.Control.MiniMap(
-    startLayer).addTo(map)
+    startLayer, {
+        toggleDisplay: true
+    }).addTo(map)
