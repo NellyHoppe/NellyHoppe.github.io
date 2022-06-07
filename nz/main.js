@@ -33,10 +33,6 @@ let layerControl = L.control.layers({
     "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
 }).addTo(map);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
 for (let etappe of ETAPPEN) {
     let popup = `
     <h3>${etappe.titel} (Etappe ${etappe.nr})</h3>
@@ -102,6 +98,7 @@ L.control.scale({
 L.control.fullscreen().addTo(map);
 
 let miniMap = new L.Control.MiniMap(
-    startLayer, {
+    L.tileLayer.provider("OpenStreetMap.Mapnik"), {
         toggleDisplay: true
-    }).addTo(map)
+    }
+).addTo(map);
