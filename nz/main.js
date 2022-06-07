@@ -33,9 +33,9 @@ let layerControl = L.control.layers({
     "Esri Orthophoto": L.tileLayer.provider("Esri.WorldImagery"),
 }).addTo(map);
 
-/*L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);*/
+}).addTo(map);
 
 for (let etappe of ETAPPEN) {
     let popup = `
